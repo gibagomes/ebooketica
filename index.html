@@ -1,265 +1,625 @@
-export default function LandingPageEbookEtica() {
-  return (
-    <div className="min-h-screen bg-white text-black">
-      <section className="relative overflow-hidden border-b">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-white to-zinc-100" />
-        <div className="relative mx-auto max-w-7xl px-6 py-16 md:py-24">
-          <div className="grid items-center gap-12 md:grid-cols-2">
-            <div>
-              <div className="mb-4 inline-flex items-center rounded-full border border-orange-200 bg-white px-4 py-2 text-sm font-medium text-orange-700 shadow-sm">
-                Monitoria Jurídica • Exame de Ordem
-              </div>
-              <h1 className="max-w-2xl text-4xl font-black leading-tight tracking-tight md:text-6xl">
-                O Mapa da Aprovação em <span className="text-orange-500">Ética Profissional</span>
-              </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-700 md:text-xl">
-                Um ebook estratégico, construído a partir da incidência real de cobrança nas provas da OAB, para ajudar você a estudar com foco, método e prioridade.
-              </p>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O Mapa da Aprovação em Ética Profissional</title>
+  <style>
+    :root {
+      --bg: #f4f4f4;
+      --surface: #ffffff;
+      --surface-soft: #f8f8f8;
+      --text: #202020;
+      --muted: #5d5d5d;
+      --border: #e6e6e6;
+      --orange: #ef6a3a;
+      --orange-strong: #f25c2a;
+      --orange-dark: #b2451d;
+      --black-soft: #111111;
+      --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --max: 1180px;
+    }
 
-              <div className="mt-8 grid gap-3 sm:grid-cols-2">
-                {[
-                  "Baseado nos Exames 25 a 45",
-                  "Lei seca + resumo + questões",
-                  "Organização por frequência de cobrança",
-                  "Foco em 40 pontos e aprovação"
-                ].map((item) => (
-                  <div key={item} className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm">
-                    <p className="font-medium text-zinc-800">✓ {item}</p>
-                  </div>
-                ))}
-              </div>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #f7f7f7 0%, #ffffff 100%);
+      line-height: 1.5;
+    }
 
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                <a
-                  href="#comprar"
-                  className="inline-flex items-center justify-center rounded-2xl bg-orange-500 px-6 py-4 text-lg font-bold text-white shadow-lg shadow-orange-200 transition hover:scale-[1.02] hover:bg-orange-600"
-                >
-                  Quero estudar com estratégia
-                </a>
-                <a
-                  href="#conteudo"
-                  className="inline-flex items-center justify-center rounded-2xl border border-zinc-300 bg-white px-6 py-4 text-lg font-semibold text-zinc-900 transition hover:bg-zinc-50"
-                >
-                  Ver o conteúdo do ebook
-                </a>
-              </div>
-            </div>
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
 
-            <div className="mx-auto w-full max-w-md">
-              <div className="rounded-[2rem] border border-zinc-200 bg-white p-5 shadow-2xl shadow-zinc-200">
-                <div className="rounded-[1.5rem] bg-zinc-50 p-4">
-                  <div className="aspect-[3/4] rounded-[1.25rem] border border-zinc-200 bg-white p-6 shadow-inner">
-                    <div className="flex h-full flex-col justify-between rounded-[1rem] border border-zinc-100 bg-gradient-to-b from-white to-orange-50 p-6">
-                      <div>
-                        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-500">Exame de Ordem da OAB</p>
-                        <h2 className="mt-4 text-3xl font-black leading-tight text-zinc-900">
-                          O Mapa da Aprovação
-                        </h2>
-                        <p className="mt-3 text-xl font-semibold text-orange-500">Disciplina: Ética Profissional</p>
-                      </div>
-                      <div className="space-y-3">
-                        <div className="rounded-xl bg-white p-3 shadow-sm">
-                          <p className="text-sm font-semibold text-zinc-800">✓ Conteúdo essencial</p>
-                        </div>
-                        <div className="rounded-xl bg-white p-3 shadow-sm">
-                          <p className="text-sm font-semibold text-zinc-800">✓ Artigos mais cobrados</p>
-                        </div>
-                        <div className="rounded-xl bg-white p-3 shadow-sm">
-                          <p className="text-sm font-semibold text-zinc-800">✓ Método de estudo por incidência</p>
-                        </div>
-                      </div>
-                      <div>
-                        <p className="text-sm text-zinc-500">Autores</p>
-                        <p className="font-bold text-zinc-900">Gilberto Gomes e Tayse Tavares</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
 
-      <section className="mx-auto max-w-7xl px-6 py-16" id="problema">
-        <div className="grid gap-8 md:grid-cols-3">
-          {[
-            {
-              title: "A maioria estuda sem direção",
-              text: "Muitos candidatos investem tempo, energia e dinheiro, mas continuam estudando sem priorização real de prova."
-            },
-            {
-              title: "A prova tem padrão",
-              text: "A FGV repete temas, artigos e pegadinhas. Quem conhece a incidência histórica sai na frente."
-            },
-            {
-              title: "Ética pode decidir sua aprovação",
-              text: "Com 8 questões na prova, Ética representa uma parcela decisiva da pontuação necessária para alcançar os 40 pontos."
-            }
-          ].map((card) => (
-            <div key={card.title} className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm">
-              <h3 className="text-2xl font-bold">{card.title}</h3>
-              <p className="mt-4 leading-7 text-zinc-600">{card.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+    .section { padding: 72px 0; }
+    .section-sm { padding: 56px 0; }
 
-      <section className="bg-zinc-50" id="conteudo">
-        <div className="mx-auto max-w-7xl px-6 py-16">
-          <div className="max-w-3xl">
-            <p className="font-semibold uppercase tracking-[0.2em] text-orange-500">O que você vai encontrar</p>
-            <h2 className="mt-3 text-3xl font-black md:text-5xl">Um material pensado para quem quer passar</h2>
-            <p className="mt-5 text-lg leading-8 text-zinc-600">
-              O ebook foi construído para transformar o estudo de Ética em uma preparação objetiva, guiada por dados reais de cobrança e por um método simples de aplicação.
-            </p>
-          </div>
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange-strong);
+      margin-bottom: 14px;
+    }
 
-          <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {[
-              "Apresentação da estrutura da prova da OAB",
-              "Metodologia de estudo por círculos de prioridade",
-              "Análise estatística dos Exames 25 a 45",
-              "Resumo estratégico dos artigos mais cobrados",
-              "Quadros de fixação e pegadinhas da FGV",
-              "Questões comentadas de provas anteriores",
-              "Mapa final de estudo com cronograma sugerido",
-              "Direcionamento para lei seca e revisão eficiente"
-            ].map((item) => (
-              <div key={item} className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm">
-                <p className="font-semibold text-zinc-800">{item}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    .title-xl {
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      font-weight: 900;
+    }
 
-      <section className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid items-center gap-10 rounded-[2rem] border border-orange-100 bg-gradient-to-r from-orange-500 to-orange-400 p-8 text-white shadow-xl md:grid-cols-2 md:p-12">
-          <div>
-            <p className="font-semibold uppercase tracking-[0.2em] text-orange-100">Dados do ebook</p>
-            <h2 className="mt-3 text-3xl font-black md:text-5xl">Estude com base no que realmente caiu</h2>
-            <p className="mt-5 text-lg leading-8 text-orange-50">
-              O material mostra a concentração de cobrança em Ética e ajuda você a priorizar o que tem maior retorno na prova.
-            </p>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {[
-              ["116", "incidências do Estatuto"],
-              ["32", "incidências do Código de Ética"],
-              ["9", "incidências do Regulamento Geral"],
-              ["8", "questões de Ética na prova"]
-            ].map(([n, label]) => (
-              <div key={label} className="rounded-3xl bg-white/10 p-6 backdrop-blur-sm">
-                <p className="text-4xl font-black">{n}</p>
-                <p className="mt-2 text-orange-50">{label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    .title-lg {
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      font-weight: 900;
+    }
 
-      <section className="bg-zinc-50">
-        <div className="mx-auto max-w-7xl px-6 py-16">
-          <div className="grid gap-8 md:grid-cols-2">
-            <div className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm">
-              <p className="font-semibold uppercase tracking-[0.2em] text-orange-500">Para quem é</p>
-              <ul className="mt-6 space-y-4 text-zinc-700">
-                <li>✓ Estudantes que farão a 1ª fase da OAB</li>
-                <li>✓ Quem precisa de foco e priorização</li>
-                <li>✓ Quem tem pouco tempo até a prova</li>
-                <li>✓ Quem quer transformar Ética em disciplina estratégica</li>
-              </ul>
-            </div>
-            <div className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm">
-              <p className="font-semibold uppercase tracking-[0.2em] text-orange-500">Por que este material funciona</p>
-              <ul className="mt-6 space-y-4 text-zinc-700">
-                <li>✓ Organiza o estudo por frequência de cobrança</li>
-                <li>✓ Evita excesso de teoria desnecessária</li>
-                <li>✓ Ajuda a revisar com mais velocidade</li>
-                <li>✓ Une lei seca, resumo e questões em um só fluxo</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+    .subtitle {
+      margin: 20px 0 0;
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 720px;
+    }
 
-      <section className="mx-auto max-w-7xl px-6 py-16">
-        <div className="rounded-[2rem] border border-zinc-200 bg-white p-8 shadow-sm md:p-12">
-          <div className="max-w-3xl">
-            <p className="font-semibold uppercase tracking-[0.2em] text-orange-500">Oferta</p>
-            <h2 className="mt-3 text-3xl font-black md:text-5xl">Comece hoje sua preparação com método</h2>
-            <p className="mt-5 text-lg leading-8 text-zinc-600">
-              Tenha acesso a um ebook construído para acelerar sua preparação em Ética, com linguagem simples, foco nos artigos certos e direcionamento objetivo para a prova.
-            </p>
-          </div>
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+      background: radial-gradient(circle at top left, rgba(242, 92, 42, 0.10), transparent 28%),
+                  radial-gradient(circle at bottom right, rgba(178, 69, 29, 0.08), transparent 24%),
+                  linear-gradient(180deg, #ffffff 0%, #f7f7f7 100%);
+    }
 
-          <div className="mt-10 grid gap-8 lg:grid-cols-[1.2fr_0.8fr]" id="comprar">
-            <div className="rounded-3xl border border-zinc-200 bg-zinc-50 p-8">
-              <h3 className="text-2xl font-bold">O que está incluído</h3>
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                {[
-                  "Ebook completo de Ética Profissional",
-                  "Análise estatística de incidência",
-                  "Resumo dos principais dispositivos",
-                  "Mapa final de estudo",
-                  "Questões comentadas",
-                  "Estratégia de revisão orientada"
-                ].map((item) => (
-                  <div key={item} className="rounded-2xl bg-white p-4 shadow-sm">
-                    <p className="font-medium">✓ {item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+    .hero-grid {
+      display: grid;
+      gap: 40px;
+      align-items: center;
+      grid-template-columns: 1.2fr 0.8fr;
+      min-height: 92vh;
+      padding: 42px 0 56px;
+    }
 
-            <div className="rounded-3xl border-2 border-orange-500 bg-white p-8 shadow-xl shadow-orange-100">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-500">Acesso imediato</p>
-              <div className="mt-5">
-                <p className="text-zinc-500 line-through">De R$ 97,00</p>
-                <p className="text-5xl font-black text-zinc-900">R$ 47,00</p>
-                <p className="mt-2 text-sm text-zinc-500">ou conforme sua oferta promocional</p>
-              </div>
-              <a
-                href="#"
-                className="mt-8 inline-flex w-full items-center justify-center rounded-2xl bg-orange-500 px-6 py-4 text-lg font-bold text-white shadow-lg shadow-orange-200 transition hover:scale-[1.02] hover:bg-orange-600"
-              >
-                Comprar agora
-              </a>
-              <p className="mt-4 text-center text-sm text-zinc-500">
-                Pagamento seguro • Acesso digital • Estude no seu ritmo
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      border: 1px solid rgba(242, 92, 42, 0.18);
+      color: var(--orange-dark);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+    }
 
-      <section className="bg-black text-white">
-        <div className="mx-auto max-w-7xl px-6 py-14">
-          <div className="grid gap-8 md:grid-cols-2 md:items-center">
-            <div>
-              <h2 className="text-3xl font-black md:text-4xl">Estudar com mapa é diferente de estudar no improviso.</h2>
-              <p className="mt-4 max-w-2xl text-zinc-300">
-                Transforme Ética em uma disciplina previsível, estratégica e decisiva para sua aprovação na 1ª fase da OAB.
-              </p>
-            </div>
-            <div className="flex flex-col gap-4 sm:flex-row sm:justify-end">
-              <a
-                href="#comprar"
-                className="inline-flex items-center justify-center rounded-2xl bg-orange-500 px-6 py-4 text-lg font-bold text-white transition hover:bg-orange-600"
-              >
-                Garantir meu acesso
-              </a>
-              <a
-                href="#topo"
-                className="inline-flex items-center justify-center rounded-2xl border border-zinc-700 px-6 py-4 text-lg font-semibold text-white transition hover:bg-zinc-900"
-              >
-                Voltar ao topo
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+    .accent { color: var(--orange-strong); }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 24px;
+      border-radius: 16px;
+      font-weight: 800;
+      transition: transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--orange-strong), var(--orange));
+      color: #fff;
+      box-shadow: 0 14px 26px rgba(242, 92, 42, 0.24);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .point-card, .card {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .point-card strong { color: var(--black-soft); }
+
+    .book-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .book-frame {
+      width: min(420px, 100%);
+      background: #fff;
+      border-radius: 28px;
+      padding: 18px;
+      border: 1px solid var(--border);
+      box-shadow: 0 22px 50px rgba(0,0,0,0.12);
+      transform: rotate(1deg);
+    }
+
+    .book-frame img {
+      border-radius: 22px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .floating-note {
+      position: absolute;
+      right: -14px;
+      bottom: 18px;
+      background: var(--black-soft);
+      color: #fff;
+      padding: 16px 18px;
+      border-radius: 18px;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.22);
+      max-width: 220px;
+    }
+
+    .grid-3, .grid-4, .grid-2 {
+      display: grid;
+      gap: 22px;
+    }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .metric-band {
+      background: linear-gradient(135deg, var(--orange-dark), var(--orange-strong));
+      color: #fff;
+      border-radius: 32px;
+      padding: 38px;
+      box-shadow: 0 24px 50px rgba(178, 69, 29, 0.18);
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .metric {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 20px;
+      padding: 22px;
+    }
+
+    .metric-number {
+      font-size: 2.2rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .offer {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .offer-box {
+      border: 2px solid rgba(242, 92, 42, 0.18);
+      border-radius: 28px;
+      padding: 28px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 24px;
+    }
+
+    .price-old {
+      color: #999;
+      text-decoration: line-through;
+      margin: 10px 0 0;
+    }
+
+    .price-new {
+      font-size: 3.2rem;
+      line-height: 1;
+      margin: 10px 0;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .list {
+      list-style: none;
+      margin: 18px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .list li {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface-soft);
+    }
+
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: #fff;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      border: none;
+      background: #fff;
+      padding: 20px 22px;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .25s ease;
+      padding: 0 22px;
+      color: var(--muted);
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 220px;
+      padding: 0 22px 20px;
+    }
+
+    .testimonial {
+      border-left: 4px solid var(--orange-strong);
+    }
+
+    .footer-cta {
+      background: var(--black-soft);
+      color: white;
+    }
+
+    .footer-cta .subtitle { color: rgba(255,255,255,0.75); }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.86);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--orange-strong), var(--orange-dark));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 900;
+    }
+
+    .mini-nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .offer,
+      .grid-2,
+      .grid-3,
+      .grid-4,
+      .metric-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid { min-height: auto; padding-top: 28px; }
+      .floating-note { position: static; margin-top: 16px; max-width: none; }
+      .offer-box { position: static; }
+      .mini-nav { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .section { padding: 56px 0; }
+      .hero-points { grid-template-columns: 1fr; }
+      .btn { width: 100%; }
+      .hero-actions { flex-direction: column; }
+      .metric-band { padding: 24px; }
+      .book-frame { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <span class="brand-mark">MJ</span>
+        <span>Monitoria Jurídica</span>
+      </div>
+      <nav class="mini-nav">
+        <a href="#conteudo">Conteúdo</a>
+        <a href="#metodo">Método</a>
+        <a href="#oferta">Oferta</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="btn btn-primary" href="#oferta">Quero o ebook</a>
     </div>
-  );
-}
+  </header>
+
+  <section class="hero" id="topo">
+    <div class="container hero-grid">
+      <div>
+        <div class="badge">Exame de Ordem • Ética Profissional</div>
+        <h1 class="title-xl">Estude com o <span class="accent">mapa da aprovação</span> e transforme Ética em uma disciplina estratégica.</h1>
+        <p class="subtitle">
+          Um ebook construído com base na frequência real de cobrança da FGV, para ajudar você a priorizar os artigos certos, estudar com método e aumentar sua chance de aprovação na 1ª fase da OAB.
+        </p>
+
+        <div class="hero-points">
+          <div class="point-card"><strong>Baseado nos Exames 25 a 45</strong><br><span style="color:var(--muted)">Estudo orientado por incidência histórica.</span></div>
+          <div class="point-card"><strong>Lei seca + resumo + questões</strong><br><span style="color:var(--muted)">Fluxo simples para aprender e revisar.</span></div>
+          <div class="point-card"><strong>Organização por prioridade</strong><br><span style="color:var(--muted)">Foco no que mais cai na prova.</span></div>
+          <div class="point-card"><strong>Meta objetiva: 40 pontos</strong><br><span style="color:var(--muted)">Estratégia real de aprovação.</span></div>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#oferta">Garantir meu acesso</a>
+          <a class="btn btn-secondary" href="#conteudo">Ver conteúdo do ebook</a>
+        </div>
+      </div>
+
+      <div class="book-wrap">
+        <div class="book-frame">
+          <img src="WhatsApp%20Image%202026-03-09%20at%2017.10.13.jpeg" alt="Capa do ebook de Ética Profissional" />
+        </div>
+        <div class="floating-note">
+          <strong>Ética representa 8 questões.</strong><br>
+          Você não precisa estudar tudo. Precisa estudar o que mais cai.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container grid-3">
+      <div class="card">
+        <h3>A maioria reprova sem estratégia</h3>
+        <p style="color:var(--muted)">O ebook mostra que o problema muitas vezes não é falta de estudo, mas falta de priorização e método.</p>
+      </div>
+      <div class="card">
+        <h3>A FGV tem padrão</h3>
+        <p style="color:var(--muted)">A banca concentra cobrança em poucos temas e repete estruturas, artigos e pegadinhas.</p>
+      </div>
+      <div class="card">
+        <h3>Ética pode decidir a prova</h3>
+        <p style="color:var(--muted)">Com 8 questões, a disciplina representa parcela relevante da sua pontuação rumo aos 40 acertos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="conteudo" style="background: var(--surface-soft); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="container">
+      <span class="eyebrow">O que você vai encontrar</span>
+      <h2 class="title-lg">Conteúdo organizado para quem quer passar</h2>
+      <p class="subtitle">Tudo foi estruturado para tornar Ética mais previsível, mais enxuta e mais eficiente dentro da sua rotina de preparação.</p>
+
+      <div class="grid-4" style="margin-top: 30px;">
+        <div class="card">Estrutura da 1ª fase da OAB e visão estratégica da prova.</div>
+        <div class="card">Metodologia de estudo por incidência histórica e círculos de prioridade.</div>
+        <div class="card">Análise estatística dos Exames 25 a 45.</div>
+        <div class="card">Resumo dos artigos mais cobrados do Estatuto da OAB.</div>
+        <div class="card">Quadros de fixação, palavras-chave e pegadinhas da FGV.</div>
+        <div class="card">Código de Ética, Regulamento Geral e Provimento 205/2021.</div>
+        <div class="card">Questões comentadas de provas anteriores.</div>
+        <div class="card">Mapa final de estudo com cronograma sugerido.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="metodo">
+    <div class="container metric-band">
+      <span class="eyebrow" style="color:#fff; opacity:.85;">Dados do ebook</span>
+      <h2 class="title-lg" style="color:#fff;">A prova não é aleatória. Ela tem concentração de cobrança.</h2>
+      <p class="subtitle" style="color: rgba(255,255,255,0.84); max-width: 900px;">O ebook mostra que o Estatuto da OAB é a espinha dorsal da disciplina e que os artigos mais cobrados merecem prioridade máxima na sua preparação.</p>
+
+      <div class="metric-grid">
+        <div class="metric"><div class="metric-number">116</div><div>incidências do Estatuto da Advocacia</div></div>
+        <div class="metric"><div class="metric-number">32</div><div>incidências do Código de Ética</div></div>
+        <div class="metric"><div class="metric-number">9</div><div>incidências do Regulamento Geral</div></div>
+        <div class="metric"><div class="metric-number">8</div><div>questões de Ética por prova</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container grid-2">
+      <div class="card">
+        <span class="eyebrow">Para quem é</span>
+        <h3 class="title-lg" style="font-size:2rem">Ideal para quem precisa de foco</h3>
+        <ul class="list">
+          <li>Estudantes que vão fazer a 1ª fase da OAB</li>
+          <li>Quem tem pouco tempo até a prova</li>
+          <li>Quem quer estudar com priorização real</li>
+          <li>Quem deseja transformar Ética em ponto garantido</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="eyebrow">Por que funciona</span>
+        <h3 class="title-lg" style="font-size:2rem">Porque reduz desperdício de tempo</h3>
+        <ul class="list">
+          <li>Você aprende o que a banca realmente cobra</li>
+          <li>Evita excesso de teoria desnecessária</li>
+          <li>Revisa com mais velocidade e clareza</li>
+          <li>Combina resumo, lei seca e prática com questões</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container grid-3">
+      <div class="card testimonial">
+        <p><strong>Estratégia acima de volume.</strong></p>
+        <p style="color:var(--muted)">A proposta do material é simples: não estudar tudo, mas estudar melhor, com foco no que oferece maior retorno estatístico.</p>
+      </div>
+      <div class="card testimonial">
+        <p><strong>Baseado em dados reais.</strong></p>
+        <p style="color:var(--muted)">O ebook foi construído com base em 20 provas da OAB, mapeando frequência, recorrência e temas mais sensíveis.</p>
+      </div>
+      <div class="card testimonial">
+        <p><strong>Linguagem clara e prática.</strong></p>
+        <p style="color:var(--muted)">Feito para compreensão rápida, revisão eficiente e fixação inteligente dos dispositivos mais cobrados.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="oferta" style="background: var(--surface-soft); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="container offer">
+      <div class="card">
+        <span class="eyebrow">Oferta</span>
+        <h2 class="title-lg">Comece hoje sua preparação com método</h2>
+        <p class="subtitle">Tenha acesso a um material pensado para a realidade do candidato da OAB: pouco tempo, muitas disciplinas e necessidade de priorização inteligente.</p>
+        <ul class="list">
+          <li>Ebook completo de Ética Profissional</li>
+          <li>Análise estatística por incidência histórica</li>
+          <li>Resumo dos artigos mais cobrados</li>
+          <li>Mapa final de estudo e cronograma</li>
+          <li>Questões comentadas para fixação</li>
+          <li>Direcionamento estratégico para lei seca</li>
+        </ul>
+      </div>
+
+      <aside class="offer-box">
+        <span class="eyebrow">Acesso digital</span>
+        <h3 style="margin:0; font-size:1.7rem;">O Mapa da Aprovação – Ética</h3>
+        <p class="price-old">De R$ 97,00</p>
+        <p class="price-new">R$ 47,00</p>
+        <p style="margin-top:0; color:var(--muted)">ou conforme sua oferta promocional</p>
+
+        <a class="btn btn-primary" style="width:100%; margin-top:14px;" href="#">Comprar agora</a>
+        <p style="font-size:.92rem; color:var(--muted); text-align:center; margin:14px 0 0;">Pagamento seguro • Acesso imediato • Estude no seu ritmo</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section-sm" id="faq">
+    <div class="container">
+      <span class="eyebrow">Perguntas frequentes</span>
+      <h2 class="title-lg">Dúvidas antes de comprar?</h2>
+
+      <div style="display:grid; gap:16px; margin-top:28px;">
+        <div class="faq-item active">
+          <button class="faq-question">Esse ebook serve para quem vai fazer a 1ª fase agora?<span>+</span></button>
+          <div class="faq-answer"><p>Sim. O material foi pensado justamente para a preparação da 1ª fase, com foco em Ética Profissional e organização por incidência de cobrança.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">O conteúdo é baseado em questões reais da OAB?<span>+</span></button>
+          <div class="faq-answer"><p>Sim. O ebook parte da análise das provas anteriores e organiza os artigos e temas conforme a frequência real de cobrança da banca.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Eu preciso estudar só por esse material?<span>+</span></button>
+          <div class="faq-answer"><p>O ideal é usar o ebook como base estratégica, aliado à leitura da lei seca e à resolução de questões. Essa é a lógica de estudo proposta no próprio material.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">O ebook ajuda quem tem pouco tempo até a prova?<span>+</span></button>
+          <div class="faq-answer"><p>Sim. Um dos maiores diferenciais é justamente reduzir dispersão e priorizar o que mais tem chance de aparecer na prova.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-cta section-sm">
+    <div class="container grid-2" style="align-items:center;">
+      <div>
+        <h2 class="title-lg" style="color:#fff;">Estudar com mapa é diferente de estudar no improviso.</h2>
+        <p class="subtitle">Transforme Ética em uma disciplina previsível, estratégica e decisiva para sua aprovação na OAB.</p>
+      </div>
+      <div style="display:flex; gap:14px; justify-content:flex-end; flex-wrap:wrap;">
+        <a class="btn btn-primary" href="#oferta">Garantir meu acesso</a>
+        <a class="btn btn-secondary" href="#topo">Voltar ao topo</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach((button) => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach((faq) => faq.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
